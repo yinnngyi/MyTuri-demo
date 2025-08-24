@@ -1,0 +1,214 @@
+@import 'variable';
+@import 'breakpoint';
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  color: $text-primary;
+  background-color: $bg-blue;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+  color: $text-primary;
+  outline: none;
+}
+
+a {
+  transition: .3s;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+  text-decoration: none;
+}
+
+button,
+button:hover,
+button:focus,
+input {
+  outline: none;
+  border: none;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+input {
+  border-radius: 4px;
+  padding: 0px 20px;
+  border: none;
+  font-size: 18px;
+  line-height: 1.6;
+
+  &::-ms-input-placeholder {
+    color: $text-light;
+    /* Edge 12-18 */
+  }
+
+  &::placeholder {
+    color: $text-light;
+  }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #FFF inset;
+    box-shadow: 0 0 0 1000px #FFF inset;
+  }
+}
+
+/* ==========================================================================
+  Typography
+========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1;
+  font-weight: bold;
+  font-size: revert;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+  base
+========================================================================== */
+
+@mixin margin-properties($direction, $values) {
+  @each $index, $value in $values {
+    .mr-#{$direction}-#{$index} {
+      margin-#{$direction}: $value;
+    }
+  }
+}
+
+@include margin-properties('t', (1: 10px,
+    2: 20px,
+    3: 30px,
+    4: 40px,
+    5: 50px,
+    6: 60px,
+    7: 70px,
+    8: 80px,
+    9: 90px,
+    10: 100px));
+
+@include margin-properties('r', (1: 10px,
+    2: 20px,
+    3: 30px,
+    4: 40px,
+    5: 50px,
+    6: 60px,
+    7: 70px,
+    8: 80px,
+    9: 90px,
+    10: 100px));
+
+@include margin-properties('b', (1: 10px,
+    2: 20px,
+    3: 30px,
+    4: 40px,
+    5: 50px,
+    6: 60px,
+    7: 70px,
+    8: 80px,
+    9: 90px,
+    10: 100px));
+
+@include margin-properties('l', (1: 10px,
+    2: 20px,
+    3: 30px,
+    4: 40px,
+    5: 50px,
+    6: 60px,
+    7: 70px,
+    8: 80px,
+    9: 90px,
+    10: 100px));
+
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
+  display: none;
+}
+
+.gap-16 {
+  gap: 16px;
+}
+
+.gap-24 {
+  gap: 24px;
+}
+
+.mobileOnly,
+.hide {
+  display: none !important;
+}
+
+.pcOnly {
+  display: block !important;
+}
+
+@mixin buttonActive() {
+  transform: scale(0.95);
+  opacity: 0.8; 
+}
+
+// 淡入背景
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// 放大彈窗
+@keyframes popupZoom {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

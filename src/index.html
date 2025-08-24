@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyTuri</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/MyTuri-icon.png">
+    <link rel="stylesheet" href="scss/main.scss" />
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <include src="_header.html"></include>
+        <!-- Main Content Grid -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <include src="_left.html"></include>
+            <!-- Right Column -->
+            <include src="_right.html"></include>
+        </div>
+        <div id="startPopup">
+            <div>
+                <p>For the best experience, please turn up your volume.</p>
+                <button id="startLessonBtn">Okay</button>
+            </div>
+        </div>
+        <div id="choicePopup"></div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/lessonData.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
