@@ -160,7 +160,7 @@
       });
     }
   }
-})({"1iwUW":[function(require,module,exports,__globalThis) {
+})({"eUlnC":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -168,7 +168,7 @@ var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "0bcb44a518dbc454";
+module.bundle.HMR_BUNDLE_ID = "9582912b57fff79c";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_SERVER_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -666,255 +666,480 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"1SICI":[function(require,module,exports,__globalThis) {
-(function() {
-    // Collapsible functionality
-    $('.card-header.clickable').on('click', function() {
-        const $card = $(this).closest('.collapsible');
-        const $content = $card.find('.card-content');
-        const $icon = $(this).find('.collapse-icon');
-        if ($card.hasClass('collapsed')) {
-            // Expand
-            $card.removeClass('collapsed').addClass('expanded');
-            $content.slideDown(300);
-            $icon.attr('data-lucide', 'chevron-up');
-        } else {
-            // Collapse
-            $card.removeClass('expanded').addClass('collapsed');
-            $content.slideUp(300);
-            $icon.attr('data-lucide', 'chevron-down');
+},{}],"iHzNv":[function(require,module,exports,__globalThis) {
+window.lessonData = {
+    "greeting": [
+        {
+            "speaker": "Turi",
+            "text": "Welcome back. Today\u2019s mission: spot linear functions fast \u2014 no tricks, just clean reasoning.",
+            "audio": "Greetings/M1_Greet_1.mp3"
+        },
+        {
+            "speaker": "Turi",
+            "text": "Think of it like speed-dating with graphs \u2014 you\u2019ll know in seconds if it\u2019s linear or not.",
+            "audio": "Greetings/M1_Greet_2.mp3"
+        },
+        {
+            "speaker": "UnvoicedNote",
+            "text": "In live mode, Turi makes sure students are ready before beginning."
+        },
+        {
+            "speaker": "Turi",
+            "text": "You\u2019ll see equations and graphs. Your job: decide if they\u2019re linear and explain why.",
+            "audio": "Greetings/M1_Greet_3.mp3"
+        },
+        {
+            "speaker": "UnvoicedNote",
+            "text": "In live mode, you can answer by voice or typing.",
+            "audio": "Greetings/M1_Greet_4.mp3"
         }
-        // Recreate icons after changing data-lucide attribute
-        setTimeout(()=>{
-            lucide.createIcons();
-        }, 100);
-    });
-    /* ------------------------------------------------ */ const $chatContainer = $('.chat-messages');
-    // 打字效果：逐字顯示文字
-    function typeText($element, text, speed = 50) {
-        return new Promise((resolve)=>{
-            // 把字串丟給 DOMParser 解析成 DOM 結構
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(`<div>${text}</div>`, "text/html");
-            const nodes = Array.from(doc.body.firstChild.childNodes);
-            let nodeIndex = 0;
-            let charIndex = 0;
-            function typeNext() {
-                if (nodeIndex >= nodes.length) {
-                    resolve();
-                    return;
+    ],
+    "concepts": [
+        {
+            "id": "A",
+            "intro": [
+                {
+                    "speaker": "Turi",
+                    "text": "First, the core idea: A line is linear if it has the <b>same slope everywhere</b>.",
+                    "audio": "Concept A/M1_CA_1.mp3",
+                    "image": "M1_CA.png"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": `In equations, that\u{2019}s <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></math></span> \u{2014} one x, power of 1, nothing fancy. That one x tells us it\u{2019}s a linear line.`,
+                    "audio": "Concept A/M1_CA_2.mp3"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": "On a graph, that\u2019s a straight line with no curves and no surprises.",
+                    "audio": "Concept A/M1_CA_3.mp3"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": "Try one. Pick the linear equation \u2014 I\u2019ll ask \u201Cwhy\u201D after.",
+                    "audio": "Concept A/M1_CA_4.mp3"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, Turi may ask follow-up questions to keep you thinking."
+                },
+                {
+                    "speaker": "Turi",
+                    "text": "Which equation is linear?",
+                    "audio": "Concept A/M1_CS1_Prompt.mp3"
                 }
-                const node = nodes[nodeIndex];
-                if (node.nodeType === Node.TEXT_NODE) {
-                    // 文字節點 → 逐字輸出
-                    const chars = node.textContent;
-                    if (charIndex < chars.length) {
-                        $element.html($element.html() + chars.charAt(charIndex));
-                        charIndex++;
-                        setTimeout(typeNext, speed);
-                    } else {
-                        nodeIndex++;
-                        charIndex = 0;
-                        typeNext();
-                    }
-                } else {
-                    // HTML 或 MathML → 整塊直接插入
-                    $element.append(node.cloneNode(true));
-                    nodeIndex++;
-                    typeNext();
-                }
-            }
-            typeNext();
-        });
-    }
-    // 播放音訊
-    function playAudio(src) {
-        return new Promise((resolve)=>{
-            const audio = new Audio(`audio/${src}`);
-            console.log(`Playing audio: audio/${src}`);
-            audio.onended = resolve;
-            audio.onerror = resolve; // 若音訊失敗也繼續流程
-            audio.play();
-        });
-    }
-    // 顯示一則訊息
-    async function showMessage(msg) {
-        const type = msg.speaker;
-        const $template = $(`.message-block.message-${type}`).first();
-        const $newMessage = $template.clone().hide();
-        const $textElement = $newMessage.find('p');
-        $textElement.text('');
-        $('.chat-messages').append($newMessage);
-        $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-        let typingPromise;
-        let audioPromise = Promise.resolve();
-        switch(type){
-            case 'UnvoicedNote':
-                $textElement.text(msg.text);
-                $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                typingPromise = new Promise((resolve)=>{
-                    $newMessage.fadeIn(300, resolve);
-                });
-                $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                break;
-            case 'Turi':
-                typingPromise = typeText($textElement, msg.text);
-                $newMessage.show();
-                $newMessage.find('.audio-icon').addClass('show');
-                $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                if (msg.audio) audioPromise = playAudio(msg.audio);
-                break;
-            case 'student':
-                $textElement.html(msg.text);
-                $newMessage.show();
-                $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                break;
-            default:
-                console.warn(`Unknown message type: ${type}`);
-                break;
-        }
-        await Promise.all([
-            typingPromise,
-            audioPromise
-        ]);
-        $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-        if (type === 'UnvoicedNote') await new Promise((resolve)=>setTimeout(resolve, 500));
-        else {
-            $newMessage.find('.audio-icon').addClass('pause');
-            await new Promise((resolve)=>setTimeout(resolve, 500));
-            $newMessage.find('.audio-icon').removeClass('show pause');
-        }
-        $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-        await new Promise((resolve)=>setTimeout(resolve, 1000));
-    }
-    // 顯示一組訊息（greeting、intro、feedback）
-    async function runLessonMessages(messages) {
-        if (!Array.isArray(messages) || messages.length === 0) return; // 沒東西就直接結束
-        for (const msg of messages){
-            if (msg.image) {
-                const $img = $('<img>', {
-                    class: 'concept-image',
-                    src: `images/${msg.image}`,
-                    alt: 'concept image'
-                });
-                $('.notes-section .card-content').empty();
-                $('.app-loader').removeClass('hidden').fadeIn(100);
-                setTimeout(()=>{
-                    $('.app-loader').fadeOut(200, ()=>{
-                        $('.notes-section .card-content').html($img).fadeIn(500);
-                    });
-                }, 300);
-            }
-            await showMessage(msg);
-        }
-    }
-    // 課程流程
-    async function runLesson(data) {
-        // 1. greeting
-        await runLessonMessages(data.greeting);
-        // 2. concepts
-        let currentConcept = 0;
-        async function runConcept(conceptIndex) {
-            const concept = data.concepts[conceptIndex];
-            // 3. intro
-            await runLessonMessages(concept.intro);
-            // 4. Choice
-            return new Promise((resolve)=>{
-                function showOptions(conceptIndex) {
-                    const concept = data.concepts[conceptIndex];
-                    // 4.1 Choice Button
-                    $('#choicePopup').empty();
-                    concept.options.forEach((option, i)=>{
-                        const $btn = $('<button>', {
-                            class: 'action-btn choice-btn',
-                            html: `<span class="choice">${option.label}.</span>${option.text}`
-                        }).attr('data-concepts', conceptIndex).attr('data-options', i);
-                        if (option.isCorrect) $btn.data('correct', true);
-                        $('#choicePopup').append($btn);
-                        $('body').addClass('show-choice');
-                        $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                    });
-                    // 5. Click
-                    $('.choice-btn').off('click').on('click', async function() {
-                        const c = $(this).data('concepts');
-                        const o = $(this).data('options');
-                        const option = data.concepts[c].options[o];
-                        // 5.1 hide choicePopup
-                        $('body').removeClass('show-choice');
-                        $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                        // 5.2 play audio
-                        await playAudio('SFX_Select_01.mp3');
-                        // 5.3 show student Msg
-                        const studentMsg = [
+            ],
+            "options": [
+                {
+                    "label": "A",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></math></span>`,
+                    "isCorrect": true,
+                    "feedback": {
+                        "turi": [
                             {
-                                speaker: 'student',
-                                text: `<span class="choice">${option.label}.</span>${option.text}`
+                                "speaker": "Turi",
+                                "text": "Exactly. One x, power of 1. That\u2019s linear.",
+                                "audio": "Choice 1 Responses/M1_CS1_A_C1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": `Spot on. It fits <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></math></span> perfectly.`,
+                                "audio": "Choice 1 Responses/M1_CS1_A_C2.mp3"
                             }
-                        ];
-                        await runLessonMessages(studentMsg);
-                        // 5.4 feedback
-                        const turiFeedbacks = option.feedback.turi;
-                        const noteFeedbacks = option.feedback.note;
-                        let messagesToShow = [];
-                        if (Array.isArray(turiFeedbacks) && turiFeedbacks.length > 0) {
-                            const randomTuri = turiFeedbacks[Math.floor(Math.random() * turiFeedbacks.length)];
-                            messagesToShow.push(randomTuri);
-                        }
-                        if (Array.isArray(noteFeedbacks) && noteFeedbacks.length > 0) messagesToShow = messagesToShow.concat(noteFeedbacks);
-                        await runLessonMessages(messagesToShow);
-                        // 5.5 isCorrect
-                        if (option.isCorrect) {
-                            // ✅
-                            currentConcept++;
-                            if (currentConcept < data.concepts.length) {
-                                await runConcept(currentConcept);
-                                resolve();
-                            } else resolve();
-                        } else {
-                            // ❌
-                            await runLessonMessages(concept.reteach);
-                            await runLessonMessages(concept.redo);
-                            showOptions(conceptIndex);
-                            $chatContainer.scrollTop($chatContainer[0].scrollHeight);
-                        }
-                    });
+                        ]
+                    }
+                },
+                {
+                    "label": "B",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><msup><mi>x</mi><mrow><mn>2</mn></mrow></msup><mo>\u{2212}</mo><mn>4</mn></math></span>`,
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `Not linear. <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mrow><mn>2</mn></mrow></msup></math></span> curves the graph.`,
+                                "audio": "Choice 1 Responses/M1_CS1_B_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Nope, quadratic means slope keeps changing.",
+                                "audio": "Choice 1 Responses/M1_CS1_B_W2.mp3"
+                            }
+                        ],
+                        "note": [
+                            {
+                                "speaker": "UnvoicedNote",
+                                "text": "In live mode, Turi can show helpful examples."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "C",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></math></span>`,
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `Not quite. <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mn>1</mn><mi>x</mi></mfrac></math></span> bends and never straightens.`,
+                                "audio": "Choice 1 Responses/M1_CS1_C_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Nope, reciprocal graphs split and curve.",
+                                "audio": "Choice 1 Responses/M1_CS1_C_W2.mp3"
+                            }
+                        ],
+                        "note": [
+                            {
+                                "speaker": "UnvoicedNote",
+                                "text": "In live mode, Turi can show helpful examples."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "D",
+                    "text": "The one that looks nicest.",
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": "Cute, but squinting doesn\u2019t straighten curves.",
+                                "audio": "Choice 1 Responses/M1_CS1_D_J1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Funny, but the graph\u2019s still curved.",
+                                "audio": "Choice 1 Responses/M1_CS1_D_J2.mp3"
+                            }
+                        ],
+                        "note": [
+                            {
+                                "speaker": "UnvoicedNote",
+                                "text": "In live mode, Turi sometimes uses humor to keep students engaged."
+                            }
+                        ]
+                    }
                 }
-                showOptions(conceptIndex);
-            });
+            ],
+            "reteach": [
+                {
+                    "speaker": "Turi",
+                    "text": `Linear means the same slope everywhere. If you see <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mrow><mn>2</mn></mrow></msup></math></span> or <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mn>1</mn><mi>x</mi></mfrac></math></span> , slope changes \u{2014} not linear.`,
+                    "audio": "Choice 1 Responses/M1_CS1_Reteach.mp3"
+                }
+            ],
+            "redo": [
+                {
+                    "speaker": "Turi",
+                    "text": "Let\u2019s try that again \u2014 which equation is linear?",
+                    "audio": "Choice 1 Responses/M1_CS1_Redo.mp3"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, Turi may re-ask until the concept is clear."
+                }
+            ]
+        },
+        {
+            "id": "B",
+            "intro": [
+                {
+                    "speaker": "Turi",
+                    "text": "If you know a line is linear, two points are enough to determine the slope.",
+                    "audio": "Concept B/M1_CB_1.mp3",
+                    "image": "M1_CB.png"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": "Moreover, once you find the slope, you can write the whole equation if you know the y-intercept, or b value.",
+                    "audio": "Concept B/M1_CB_2.mp3"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": `Look at the example question. The line is linear and it goes through points <b>(1,
+                    2)</b> and <b>(3,
+                    6)</b>. Slope is <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>m</mi><mo>=</mo><mfrac><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>6</mn><mo>\u{2212}</mo><mn>2</mn></mrow></mstyle></mrow><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>3</mn><mo>\u{2212}</mo><mn>1</mn></mrow></mstyle></mrow></mfrac><mo>=</mo><mfrac><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>4</mn></mrow></mstyle></mrow><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>2</mn></mrow></mstyle></mrow></mfrac><mo>=</mo><mn>2</mn></math></span>.`,
+                    "audio": "Concept B/M1_CB_3.mp3"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": `Since the line goes through (0,
+                    0), y-intercept is 0. Therefore, the equation of the line is: <span><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>0</mn></math></span> or <span><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi></math></span>. Done.`,
+                    "audio": "Concept B/M1_CB_4.mp3"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": "Your turn: A straight line goes through points <b>(2,5)</b> and <b>(4,9)</b>. What\u2019s the slope?",
+                    "audio": "Concept B/M1_CB_Prompt.mp3",
+                    "image": "M1_CB_Q.png"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, students can ask for more time or let Turi know they\u2019re still working. Turi will wait, but repeated requests or prolonged idling will be flagged as possible off-task behavior."
+                }
+            ],
+            "options": [
+                {
+                    "label": "A",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>m</mi><mo>=</mo><mn>1</mn></math></span>`,
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `Not quite. Slope is rise over run. `,
+                                "audio": "Concept B/M1_CB_A_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Close, you calculated rise/run wrong. Rise is vertical and run is horizontal.",
+                                "audio": "Concept B/M1_CB_A_W2.mp3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "B",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>m</mi><mo>=</mo><mn>2</mn></math></span>`,
+                    "isCorrect": true,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `Correct. Rise is 4, run is 2, slope is 2. `,
+                                "audio": "Concept B/M1_CB_B_C1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": `Nice. Slope is <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>4</mn></mrow></mstyle></mrow><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>2</mn></mrow></mstyle></mrow></mfrac><mo>=</mo><mn>2</mn></math></span>.`,
+                                "audio": "Concept B/M1_CB_B_C2.mp3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "C",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>m</mi><mo>=</mo><mfrac><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>1</mn></mrow></mstyle></mrow><mrow><mpadded height="8.6pt" depth="3pt" width="0"><mrow></mrow></mpadded><mstyle displaystyle="false" scriptlevel="0"><mrow><mn>2</mn></mrow></mstyle></mrow></mfrac></math></span>`,
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `Not quite. You flipped rise/run.`,
+                                "audio": "Concept B/M1_CB_C_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Nope, slope is rise over run, not the other way.",
+                                "audio": "Concept B/M1_CB_C_W2.mp3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "D",
+                    "text": "No slope, too tired.",
+                    "isCorrect": false,
+                    "feedback": {
+                        "note": [
+                            {
+                                "speaker": "UnvoicedNote",
+                                "text": "In live mode, Turi may steer the student back on track if jokes continue."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "redo": [
+                {
+                    "speaker": "Turi",
+                    "text": "Try again. What\u2019s the slope for between points <b>(2,5)</b> and <b>(4,9)</b>?",
+                    "audio": "Concept B/M1_CB_Redo.mp3"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, Turi guides students toward the right answer before moving on."
+                }
+            ]
+        },
+        {
+            "id": "C",
+            "intro": [
+                {
+                    "speaker": "Turi",
+                    "text": "Last check: equations can be written in many forms \u2014 still linear if the slope stays constant.",
+                    "audio": "Concept C/M1_CC_1.mp3"
+                },
+                {
+                    "speaker": "Turi",
+                    "text": `For examples: <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>\u{2212}</mo><mn>3</mn><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></math></span> or <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mn>2</mn><mi>x</mi><mo>\u{2212}</mo><mi>y</mi><mo>=</mo><mn>4</mn></math>. Different look, same slope rule.`,
+                    "audio": "Concept C/M1_CC_2.mp3"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, Turi can adjust the amount of algebra shown."
+                },
+                {
+                    "speaker": "Turi",
+                    "text": "Which of these is <b>not</b> linear?",
+                    "audio": "Concept C/M1_CC_Prompt.mp3",
+                    "image": "M1_CC_Q.png"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, students can ask for more time, and Turi will wait."
+                }
+            ],
+            "options": [
+                {
+                    "label": "A",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mo>\u{2212}</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>7</mn></math></span>`,
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": "Nope, that is still linear. The slope is \u22125",
+                                "audio": "Concept C/M1_CC_A_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": `Not quite. It fits <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></math></span>, so it\u{2019}s linear.`,
+                                "audio": "Concept C/M1_CC_A_W2.mp3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "B",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mn>3</mn><mi>y</mi><mo>\u{2212}</mo><mn>6</mn><mi>x</mi><mo>=</mo><mn>12</mn></math></span>`,
+                    "isCorrect": false,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `Nope, you can rearrange to <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>4</mn></math></span> , which is linear.`,
+                                "audio": "Concept C/M1_CC_B_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Not quite. This is just in standard form, still linear.",
+                                "audio": "Concept C/M1_CC_B_W2.mp3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "C",
+                    "text": `<span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo>=</mo><mn>4</mn><msup><mi>x</mi><mrow><mn>2</mn></mrow></msup><mo>+</mo><mn>1</mn></math></span>`,
+                    "isCorrect": true,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": `NCorrect. <span><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>x</mi><mrow><mn>2</mn></mrow></msup></math></span> makes it quadratic, not linear.`,
+                                "audio": "Concept C/M1_CC_C_C1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": "Exactly. Squared x makes it quadratic, so it\u2019s out.",
+                                "audio": "Concept C/M1_CC_C_C2.mp3"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "reteach": [
+                {
+                    "speaker": "Turi",
+                    "text": `Linear means no exponents other than 1, no variables multiplied together. `,
+                    "audio": "Concept C/M1_CC_Reteach.mp3"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, Turi can handle unexpected answers appropriately."
+                }
+            ],
+            "redo": [
+                {
+                    "speaker": "Turi",
+                    "text": "Try again \u2014 which of these is <b>not</b> linear?",
+                    "audio": "Concept C/M1_CC_Redo.mp3"
+                },
+                {
+                    "speaker": "UnvoicedNote",
+                    "text": "In live mode, this re-ask would be open-ended, and Turi would guide the student until correct before moving on."
+                }
+            ]
+        },
+        {
+            "id": "Quick Fire",
+            "intro": [
+                {
+                    "speaker": "Turi",
+                    "text": "Before we wrap \u2014 True or False: All linear equations have the same slope.",
+                    "audio": "Quick Fire/M1_QF_Intro.mp3"
+                }
+            ],
+            "options": [
+                {
+                    "label": "True",
+                    "text": '',
+                    "isCorrect": true,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": "Nope, slope depends on the equation. Linear just means slope is constant within one equation.",
+                                "audio": "Quick Fire/M1_QF_A_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": `Not quite. Different lines can have different slopes. Constant slope only applies within a single equation.`,
+                                "audio": "Quick Fire/M1_QF_A_W2.mp3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "label": "False",
+                    "text": '',
+                    "isCorrect": true,
+                    "feedback": {
+                        "turi": [
+                            {
+                                "speaker": "Turi",
+                                "text": "Exactly. Slope varies between different lines, but stays constant within one.",
+                                "audio": "Quick Fire/M1_QF_A_W1.mp3"
+                            },
+                            {
+                                "speaker": "Turi",
+                                "text": `Correct. Each linear equation has its own slope.`,
+                                "audio": "Quick Fire/M1_QF_A_W2.mp3"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
-        // 2. concepts
-        await runConcept(currentConcept);
-        // 3. End
-        await runLessonMessages(data.close);
-    }
-    /* ------------------------------------------------ */ // 啟動流程
-    $('#startLessonBtn').on('click', function() {
-        $('#startPopup').hide();
-        setTimeout(()=>{
-            runLesson(lessonData); // ✅ 修正：傳整個 lessonData
-        }, 500);
-    });
-    /* ------------------------------------------------ */ // Action button interactions
-    $('.action-btn, .menu-btn').on('click', function() {
-        const buttonText = $(this).text().trim();
-        // Add visual feedback
-        $(this).addClass('active');
-        setTimeout(()=>{
-            $(this).removeClass('active');
-        }, 200);
-    });
-    // Handle window resize to maintain layout
-    $(window).on('resize', function() {
-        // Ensure proper height calculations on resize
-        const windowHeight = $(window).height();
-        const headerHeight = $('.header').outerHeight();
-        const remainingHeight = windowHeight - headerHeight;
-        $('.main-content').css('height', remainingHeight + 'px');
-    });
-    // Initial height calculation
-    $(window).trigger('resize');
-})();
+    ],
+    "close": [
+        {
+            "speaker": "Turi",
+            "text": "And that\u2019s it for today\u2019s run. In live mode, we\u2019d dive into tougher problems next. Keep that brain warmed up!",
+            "audio": "Quick Fire/M1_QF_Close.mp3"
+        },
+        {
+            "speaker": "UnvoicedNote",
+            "text": "In live mode, students answer in their own words. Turi adapts to their pace, keeps them engaged, and guides them back on track until the concept clicks"
+        }
+    ]
+};
 
-},{}]},["1iwUW","1SICI"], "1SICI", "parcelRequire94c2", {})
+},{}]},["eUlnC","iHzNv"], "iHzNv", "parcelRequire94c2", {})
 
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=lessonData.js.map

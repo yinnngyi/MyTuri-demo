@@ -1,0 +1,282 @@
+@import "//fonts.googleapis.com/earlyaccess/notosanstc.css";
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800";
+html {
+  font-size: 100%;
+}
+
+body {
+  color: #1c1c1c;
+  background-color: #aabcd6;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.6;
+  display: flex;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a, a:hover, a:focus, a:active, a.active {
+  color: #1c1c1c;
+  outline: none;
+}
+
+a {
+  transition: all .3s;
+}
+
+a:hover, a:focus, a:active, a.active {
+  text-decoration: none;
+}
+
+button, button:hover, button:focus, input {
+  border: none;
+  outline: none;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+input {
+  border: none;
+  border-radius: 4px;
+  padding: 0 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+input::placeholder {
+  color: silver;
+}
+
+input:-webkit-autofill {
+  box-shadow: inset 0 0 0 1000px #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1;
+  font-size: revert;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.mr-t-1 {
+  margin-t: 10px;
+}
+
+.mr-t-2 {
+  margin-t: 20px;
+}
+
+.mr-t-3 {
+  margin-t: 30px;
+}
+
+.mr-t-4 {
+  margin-t: 40px;
+}
+
+.mr-t-5 {
+  margin-t: 50px;
+}
+
+.mr-t-6 {
+  margin-t: 60px;
+}
+
+.mr-t-7 {
+  margin-t: 70px;
+}
+
+.mr-t-8 {
+  margin-t: 80px;
+}
+
+.mr-t-9 {
+  margin-t: 90px;
+}
+
+.mr-t-10 {
+  margin-t: 100px;
+}
+
+.mr-r-1 {
+  margin-r: 10px;
+}
+
+.mr-r-2 {
+  margin-r: 20px;
+}
+
+.mr-r-3 {
+  margin-r: 30px;
+}
+
+.mr-r-4 {
+  margin-r: 40px;
+}
+
+.mr-r-5 {
+  margin-r: 50px;
+}
+
+.mr-r-6 {
+  margin-r: 60px;
+}
+
+.mr-r-7 {
+  margin-r: 70px;
+}
+
+.mr-r-8 {
+  margin-r: 80px;
+}
+
+.mr-r-9 {
+  margin-r: 90px;
+}
+
+.mr-r-10 {
+  margin-r: 100px;
+}
+
+.mr-b-1 {
+  margin-b: 10px;
+}
+
+.mr-b-2 {
+  margin-b: 20px;
+}
+
+.mr-b-3 {
+  margin-b: 30px;
+}
+
+.mr-b-4 {
+  margin-b: 40px;
+}
+
+.mr-b-5 {
+  margin-b: 50px;
+}
+
+.mr-b-6 {
+  margin-b: 60px;
+}
+
+.mr-b-7 {
+  margin-b: 70px;
+}
+
+.mr-b-8 {
+  margin-b: 80px;
+}
+
+.mr-b-9 {
+  margin-b: 90px;
+}
+
+.mr-b-10 {
+  margin-b: 100px;
+}
+
+.mr-l-1 {
+  margin-l: 10px;
+}
+
+.mr-l-2 {
+  margin-l: 20px;
+}
+
+.mr-l-3 {
+  margin-l: 30px;
+}
+
+.mr-l-4 {
+  margin-l: 40px;
+}
+
+.mr-l-5 {
+  margin-l: 50px;
+}
+
+.mr-l-6 {
+  margin-l: 60px;
+}
+
+.mr-l-7 {
+  margin-l: 70px;
+}
+
+.mr-l-8 {
+  margin-l: 80px;
+}
+
+.mr-l-9 {
+  margin-l: 90px;
+}
+
+.mr-l-10 {
+  margin-l: 100px;
+}
+
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
+  display: none;
+}
+
+.gap-16 {
+  gap: 16px;
+}
+
+.gap-24 {
+  gap: 24px;
+}
+
+.mobileOnly, .hide {
+  display: none !important;
+}
+
+.pcOnly {
+  display: block !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupZoom {
+  from {
+    opacity: 0;
+    transform: scale(.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/*# sourceMappingURL=_base.css.map */
